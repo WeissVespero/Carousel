@@ -11,8 +11,10 @@ public class GalleryTabs : MonoBehaviour
     [SerializeField] private Button _oddBtn;
     [SerializeField] private Button _evenBtn;
 
-    public Color activeColor;
-    public Color inactiveColor;
+    [SerializeField] private Tab _allTab;
+    [SerializeField] private Tab _oddTab;
+    [SerializeField] private Tab _evenTab
+        ;
 
     void Start()
     {
@@ -26,14 +28,9 @@ public class GalleryTabs : MonoBehaviour
     void Select(GalleryFilter filter)
     {
         gallery.ApplyFilter(filter);
-
-        SetButton(_allBtn, filter == GalleryFilter.All);
-        SetButton(_oddBtn, filter == GalleryFilter.Odd);
-        SetButton(_evenBtn, filter == GalleryFilter.Even);
-    }
-
-    void SetButton(Button btn, bool active)
-    {
-        btn.image.color = active ? activeColor : inactiveColor;
+        
+        _allTab.SetButton(filter == GalleryFilter.All);
+        _oddTab.SetButton(filter == GalleryFilter.Odd);
+        _evenTab.SetButton(filter == GalleryFilter.Even);
     }
 }

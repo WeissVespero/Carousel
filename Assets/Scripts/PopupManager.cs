@@ -10,17 +10,25 @@ public class PopupManager : MonoBehaviour
     [SerializeField] private GameObject _imagePopup;
     [SerializeField] private GameObject _premiumPopup;
     [SerializeField] private Image _popupImage;
+    [SerializeField] private Button _backButton;
 
     void Awake() => Instance = this;
+
+    private void Start()
+    {
+        _backButton.onClick.AddListener(() => CloseAll());
+    }
 
     public void ShowImage(Sprite sprite)
     {
         _popupImage.sprite = sprite;
+        _backButton.gameObject.SetActive(true);
         _imagePopup.SetActive(true);
     }
 
     public void ShowPremium()
     {
+        _backButton.gameObject.SetActive(true);
         _premiumPopup.SetActive(true);
     }
 
@@ -28,5 +36,6 @@ public class PopupManager : MonoBehaviour
     {
         _imagePopup.SetActive(false);
         _premiumPopup.SetActive(false);
+        _backButton.gameObject.SetActive(false);
     }
 }
