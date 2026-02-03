@@ -15,7 +15,6 @@ public class Tab : MonoBehaviour
 
     public void SetButton(bool active)
     {
-        print("set button");
         _tabIndicator.color = active ? ActiveColor : InactiveColor;
         _tabText.color = active ? ActiveColor : InactiveTextColor;
     }
